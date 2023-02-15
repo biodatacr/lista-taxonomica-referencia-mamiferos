@@ -88,7 +88,7 @@ checklist |>
   )
 ```
 
-La lista está también disponible para descarga en formato de valores separados por comas (CSV) en:  
+La lista está disponible para descarga en formato de valores separados por comas (CSV) en:  
 [Lista taxonómica de referencia de mamíferos de Costa Rica](data/processed/lista-taxonomica-referencia-mamiferos.csv)
 
 El repositorio con los datos y el código fuente de los programas está en la dirección:  
