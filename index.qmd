@@ -87,7 +87,7 @@ checklist |>
 ```
 
 La lista está también disponible para descarga en formato CSV en:  
-[Lista taxonómica de referencia de mamíferos de Costa Rica](data/processed/lista-taxonomica-referencia-mammalia.csv)
+[Lista taxonómica de referencia de mamíferos de Costa Rica](data/processed/lista-taxonomica-referencia-mamiferos.csv)
 
 En este documento, se describe el proceso de elaboración de la lista y se presentan algunas visualizaciones de los datos que contiene.
 
