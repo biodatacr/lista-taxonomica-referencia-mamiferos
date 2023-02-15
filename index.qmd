@@ -67,6 +67,28 @@ occurrences_mammals <-
 # Introducción
 La **Lista taxonómica de referencia de mamíferos (_Mammalia_) de Costa Rica** de [BIODATACR](http://biodiversidad.go.cr/) permite integrar datos de diferentes publicadores en el sistema e implementar controles de calidad en la ortografía de los nombres científicos, su sinonimia, sus autores y su clasificación, entre otros aspectos.
 
+La siguiente tabla muestra las `r nrow(checklist)` especies de la lista. Con los controles, puede modificar la cantidad de especies desplegadas, ordenar los datos y realizar búsquedas. 
+
+```{r}
+#| label: checklist-table
+#| echo: false
+
+checklist |>
+  select(order, family, species, status) |>
+  arrange(order, family, species) |>
+  datatable(
+    colnames = c("Orden", "Familia", "Especie", "Estado"),
+    options = list(
+      pageLength = 5,
+      language = list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json')
+    ),
+    rownames= FALSE
+  )
+```
+
+La lista está también disponible para descarga en formato CSV en:  
+[Lista taxonómica de referencia de mamíferos de Costa Rica](data/processed/lista-taxonomica-referencia-mammalia-cr.csv)
+
 En este documento, se describe el proceso de elaboración de la lista y se presentan algunas visualizaciones de los datos que contiene.
 
 # Elaboración de la lista
@@ -80,7 +102,7 @@ Seguidamente, se describen en detalle las etapas del proceso de elaboración de 
 La [lista inicial](data/raw/mamiferos _2020.xlsx) contiene 257 especies de mamíferos de Costa Rica y fue recopilada en el contexto del proyecto Biodiversidad en cifras [@tania_bermudez_rojas_biodiversidad_2021]. El documento fue facilitado en formato XLSX (Microsoft Excel) y sus columnas incluyen elementos de datos como niveles taxonómicos (incluyendo `ESPECIE`, compuesta por el género, el epíteto específico y el autor), referencias bibliográficas y una indicación de si la especie es "esperada" (i.e. no ha sido observada, pero se cree que podría estar presente en el país). Además de los registros de datos, el documento en Excel incluye varias filas con información general y metadatos (ej. título, autor, fecha, etc.).
 
 ### 2. Lista intermedia
-Se removieron de la lista inicial aquellas filas que no corresponden a datos (ej. título, autor, fecha, etc.) y el resultado se guardó en formato CSV, como una [lista intermedia](data/raw/mamiferos _2020.csv). De esta manera, se obtuvo un conjunto de datos debidamente estructurado, con una fila por cada especie y una columna por cada elemento de datos.
+Se removieron de la lista inicial aquellas filas que no corresponden a datos (ej. título, autor, fecha, etc.) y el resultado se guardó en formato CSV, como una [lista intermedia](data/interim/mamiferos_2020.csv). De esta manera, se obtuvo un conjunto de datos debidamente estructurado, con una fila por cada especie y una columna por cada elemento de datos.
 
 Además, en la columna `ESPECIE` se cambió el nombre científico *Spheothos venaticus* (incorrecto) por *Speothos venaticus* (correcto). Este corrección debió realizarse en el siguiente paso, en el que se revisó programáticamente la ortografía de los nombres científicos con base en la Lista de referencia taxonómica de GBIF, pero el algoritmo no logró encontrar el nombre correcto para este caso, por lo que se corrigió manualmente.
 
@@ -107,11 +129,11 @@ En esta sección, se presentan algunas visualizaciones de las especies de la lis
 
 ## Especies
 
-### Lista final
-La siguiente tabla muestra las `r nrow(checklist)` especies de la lista final. Con los controles, puede modificar la cantidad de especies desplegadas, ordenar los datos y realizar búsquedas. 
+### Lista final e indicadores de la búsqueda de nombres
+La siguiente tabla muestra las `r nrow(checklist)` especies de la lista final, junto con el nombre de cada especie en la lista inicial y las columnas correspondientes a exactitud y nivel de confianza de la búsqueda. 
 
 ```{r}
-#| label: checklist-table
+#| label: checklist-curation-table
 #| echo: false
 
 checklist |>
@@ -126,6 +148,7 @@ checklist |>
     rownames= FALSE
   )
 ```
+
 
 ### Diferencias entre la lista inicial y la lista final
 La siguiente tabla muestra las especies en las que hay alguna diferencia entre el nombre proporcionado en la lista inicial y el resultante en la lista final (i.e. el encontrado en la lista de referencia taxonómica de GBIF). Las diferencias se deben principalmente al uso de sinónimos y a errores ortográficos.
