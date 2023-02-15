@@ -69,7 +69,7 @@ checklist_n <- nrow(checklist)
 # Introducción
 La **lista taxonómica de referencia de mamíferos (clase _Mammalia_) de Costa Rica** de [BIODATACR](http://biodiversidad.go.cr/) permite integrar datos de diferentes publicadores en el sistema e implementar controles de calidad en la ortografía de los nombres científicos, su sinonimia, sus autores y su clasificación, entre otros aspectos.
 
-La siguiente tabla muestra las **`r checklist_n` especies** de la lista. Con los controles, puede modificar la cantidad de especies desplegadas, ordenar los datos y realizar búsquedas. 
+La siguiente tabla muestra las **`r checklist_n` especies** de la lista. Con los controles de la tabla, puede modificar la cantidad de especies desplegadas, ordenar los datos y realizar búsquedas. 
 
 ```{r}
 #| label: checklist-table
@@ -91,7 +91,10 @@ checklist |>
 La lista está también disponible para descarga en formato de valores separados por comas (CSV) en:  
 [Lista taxonómica de referencia de mamíferos de Costa Rica](data/processed/lista-taxonomica-referencia-mamiferos.csv)
 
-En este documento, se describe el proceso de elaboración de la lista y se presentan algunas visualizaciones de los datos que contiene.
+El repositorio con los datos y el código fuente de los programas está en la dirección:  
+[https://github.com/biodatacr/lista-taxonomica-referencia-mamiferos](https://github.com/biodatacr/lista-taxonomica-referencia-mamiferos)
+
+En el resto de este documento, se describe el proceso de elaboración de la lista y se presentan algunas visualizaciones de los datos que contiene.
 
 # Elaboración de la lista
 El proceso inició con una lista proporcionada por un grupo de expertos en mamíferos de Costa Rica, cuya estructura y formato se refinaron progresivamente para que los nombres científicos pudieran ser verificados en la [Infraestructura Mundial de Información en Biodiversidad (GBIF)](https://www.gbif.org/), una organización dedicada a la integración de datos de biológicos de todo el mundo y, específicamente, en su [lista taxonómica de referencia o *Backbone Taxonomy*](https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c). Esta lista de GBIF se construye a partir del [Catálogo de la Vida (COL)](https://www.catalogueoflife.org/) y se completa con cerca de 100 fuentes adicionales de datos. Es actualizada periódicamente por medio de un proceso automático.
