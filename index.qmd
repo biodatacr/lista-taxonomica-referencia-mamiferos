@@ -87,7 +87,7 @@ checklist |>
 ```
 
 La lista está también disponible para descarga en formato CSV en:  
-[Lista taxonómica de referencia de mamíferos de Costa Rica](data/processed/lista-taxonomica-referencia-mammalia-cr.csv)
+[Lista taxonómica de referencia de mamíferos de Costa Rica](data/processed/lista-taxonomica-referencia-mammalia.csv)
 
 En este documento, se describe el proceso de elaboración de la lista y se presentan algunas visualizaciones de los datos que contiene.
 
@@ -119,7 +119,7 @@ La lista intermedia generada en el paso anterior se utilizó como entrada del pr
     - Exactitud de la búsqueda (exacta, difusa).
     - Nivel de confianza de la búsqueda (0...99).
 
-La [lista final](data/processed/lista-taxonomica-referencia-mammalia-cr.csv) consta de los 257 nombres de especies de la lista original, revisados y corregidos, junto con los restantes elementos de datos recuperados de la Lista de referencia taxonómica de GBIF.
+La [lista final](data/processed/lista-taxonomica-referencia-mammalia.csv) consta de los 257 nombres de especies de la lista original, revisados y corregidos, junto con los restantes elementos de datos recuperados de la Lista de referencia taxonómica de GBIF.
 
 Los elementos de datos (i.e. columnas) de la lista final están definidos de acuerdo con el [Darwin Core (DwC)](https://www.tdwg.org/standards/dwc/), un estándar orientado a facilitar la publicación e integración de datos de biodiversidad, el cual incluye un glosario de términos comúnmente utilizados en listas de especies, registros de colecciones biológicas, observaciones de ciencia ciudadana y eventos de monitoreo, entre otras fuentes [@wieczorek_darwin_2012]. La lista se empaquetó y distribuyó en formato Darwin Core Archive (DwC-A), un archivo comprimido tipo ZIP que contiene archivos de datos en formato CSV y descriptores en formato XML. El DwC-A es el formato preferido para la publicación de datos en GBIF y otras plataformas de integración.
 
