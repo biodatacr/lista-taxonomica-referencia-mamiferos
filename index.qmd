@@ -109,14 +109,14 @@ La [lista inicial](data/raw/mamiferos _2020.xlsx) contiene 257 especies de mamí
 ### 2. Lista intermedia
 Se removieron de la lista inicial aquellas filas que no corresponden a datos (ej. título, autor, fecha, etc.) y el resultado se guardó en formato CSV, como una [lista intermedia](data/interim/mamiferos_2020.csv). De esta manera, se obtuvo un conjunto de datos debidamente estructurado, con una fila por cada especie y una columna por cada elemento de datos.
 
-Además, en la columna `ESPECIE` se cambió el nombre científico *Spheothos venaticus* (incorrecto) por *Speothos venaticus* (correcto). Este corrección debió realizarse en el siguiente paso, en el que se revisó programáticamente la ortografía de los nombres científicos con base en la Lista de referencia taxonómica de GBIF, pero el algoritmo no logró encontrar el nombre correcto para este caso, por lo que se corrigió manualmente.
+Además, en la columna `ESPECIE` se cambió el nombre científico *Spheothos venaticus* (incorrecto) por *Speothos venaticus* (correcto). Este corrección debió realizarse en el siguiente paso, en el que se revisó programáticamente la ortografía de los nombres científicos con base en la lista de referencia taxonómica de GBIF, pero el algoritmo no logró encontrar el nombre correcto para este caso, por lo que se corrigió manualmente.
 
 ### 3. Lista final
 La lista intermedia generada en el paso anterior se utilizó como entrada del programa [generar-lista-taxonomica.R](src/generar-lista.R), el cual, en resumen, ejecuta las siguientes tareas:
 
 - "Limpia" la columna `ESPECIE` al remover espacios en blanco innecesarios, caracteres especiales (i.e. no alfanuméricos) y palabras siguientes a la segunda (ej. autores), de manera que se conserven solamente las dos primeras palabras: género y epíteto específico (ej. *Puma concolor*). El resultado se guarda en una nueva columna llamada `name`.
 
-- Busca los nombres científicos de la columna `name` en la Lista de referencia taxonómica de GBIF y para cada uno se recuperan elementos de datos del DwC como:
+- Busca los nombres científicos de la columna `name` en la lista de referencia taxonómica de GBIF y para cada uno se recuperan elementos de datos del DwC como:
 
     - Nombre científico (género + epíteto específico + autores).
     - Niveles taxonómicos (reino, clase, ..., familia, género, especie).
@@ -124,7 +124,7 @@ La lista intermedia generada en el paso anterior se utilizó como entrada del pr
     - Exactitud de la búsqueda (exacta, difusa).
     - Nivel de confianza de la búsqueda (0...99).
 
-La [lista final](data/processed/lista-taxonomica-referencia-mamiferos.csv) consta de los 257 nombres de especies de la lista original, revisados y corregidos, junto con los restantes elementos de datos recuperados de la Lista de referencia taxonómica de GBIF.
+La [lista final](data/processed/lista-taxonomica-referencia-mamiferos.csv) consta de los 257 nombres de especies de la lista original, revisados y corregidos, junto con los restantes elementos de datos recuperados de la lista de referencia taxonómica de GBIF.
 
 Los elementos de datos (i.e. columnas) de la lista final están definidos de acuerdo con el [Darwin Core (DwC)](https://www.tdwg.org/standards/dwc/), un estándar orientado a facilitar la publicación e integración de datos de biodiversidad, el cual incluye un glosario de términos comúnmente utilizados en listas de especies, registros de colecciones biológicas, observaciones de ciencia ciudadana y eventos de monitoreo, entre otras fuentes [@wieczorek_darwin_2012]. La lista se empaquetó y distribuyó en formato Darwin Core Archive (DwC-A), un archivo comprimido tipo ZIP que contiene archivos de datos en formato CSV y descriptores en formato XML. El DwC-A es el formato preferido para la publicación de datos en GBIF y otras plataformas de integración.
 
