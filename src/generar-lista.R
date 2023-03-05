@@ -22,7 +22,6 @@ INPUT_CHECKLIST <- "data/interim/mamiferos_2020.csv"
 OUTPUT_CHECKLIST <- "data/processed/lista-taxonomica-referencia-mamiferos.csv"
 OUTPUT_NOTFOUND_CHECKLIST <- "data/processed/lista-taxonomica-referencia-mamiferos-nombres-no-encontrados.csv"
 
-
 # This function returns a binomial species name (genus + species)
 # cleaned by removing unnecessary whitespaces, special characters
 # and additional words of an input species name
@@ -61,12 +60,12 @@ checklist <-
 # Get output checklist of names found in GBIF Backbone Taxonomy
 output_checklist <- 
   checklist |>
-  filter(!matchType == "NONE")
+  filter(!(matchType == "NONE" | matchType == "HIGHERRANK"))
 
 # Get output checklist of names NOT found in GBIF Backbone Taxonomy
 output_notfound_checklist <- 
   checklist |>
-  filter(matchType == "NONE")
+  filter(matchType == "NONE" | matchType == "HIGHERRANK")
 
 # Export output checklist to CSV
 write_csv(output_checklist, OUTPUT_CHECKLIST)
